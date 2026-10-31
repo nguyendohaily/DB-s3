@@ -1,0 +1,16 @@
+USE test_db;
+
+CREATE TABLE users1 (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    status VARCHAR(20) DEFAULT 'ACTIVE'
+);
+
+
+ALTER TABLE users1
+ADD CONSTRAINT chk_user_status CHECK (status IN ('ACTIVE', 'INACTIVE'));
+
+
+DROP TABLE IF EXISTS users1;
